@@ -1,83 +1,83 @@
-// //This is a basic form validation
-// // At the bottom there is the simple version. I then remake it to see the difference
+//This is a basic form validation
+// At the bottom there is the simple version. I then remake it to see the difference
 
-// const form = document.getElementById("form");
-// const username = document.getElementById("username");
-// const email = document.getElementById("email");
-// const password = document.getElementById("password");
-// const password2 = document.getElementById("password2");
+const form = document.getElementById("form");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const password2 = document.getElementById("password2");
 
-// //Show input error message
-// function showError(input, message) {
-//   const formControl = input.parentElement;
-//   formControl.className = "form-control error";
-//   const small = formControl.querySelector("small");
-//   small.innerText = message;
+//Show input error message
+function showError(input, message) {
+  const formControl = input.parentElement;
+  formControl.className = "form-control error";
+  const small = formControl.querySelector("small");
+  small.innerText = message;
+}
+
+//Show success outline
+function showSuccess(input) {
+  const formControl = input.parentElement;
+  formControl.className = "form-control success";
+}
+
+//Check email is valid
+function isValidEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+//Check reqired fields (this was not included in the first pass)
+// function checkRequired(inputArr) {
+//   inputArr.forEach(function (input) {
+//     if (input.value.trim() === "") {
+//       showError(input, `${getFieldName(input)} is required`);
+//     } else {
+//       showSuccess(input);
+//     }
+//   });
 // }
 
-// //Show success outline
-// function showSuccess(input) {
-//   const formControl = input.parentElement;
-//   formControl.className = "form-control success";
+//Get fieldname (this was not included in the first pass)--This is just
+// function getFieldName(input) {
+//   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 // }
 
-// //Check email is valid
-// function isValidEmail(email) {
-//   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//   return re.test(String(email).toLowerCase());
-// }
+//Event Listenters
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-// //Check reqired fields (this was not included in the first pass)
-// // function checkRequired(inputArr) {
-// //   inputArr.forEach(function (input) {
-// //     if (input.value.trim() === "") {
-// //       showError(input, `${getFieldName(input)} is required`);
-// //     } else {
-// //       showSuccess(input);
-// //     }
-// //   });
-// // }
+  checkRequired([username, email, password, password2]);
+});
 
-// //Get fieldname (this was not included in the first pass)--This is just
-// // function getFieldName(input) {
-// //   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-// // }
+//This is the longer version of event listiners
+//Event Listenters
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-// //Event Listenters
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
+  if (username.value === "") {
+    showError(username, "Sorry! Username is required.");
+  } else {
+    showSuccess(username);
+  }
 
-//   checkRequired([username, email, password, password2]);
-// });
+  if (email.value === "") {
+    showError(email, "Sorry! Email is required.");
+  } else if (!isValidEmail(email.value)) {
+    showError(email, "Email is not valid");
+  } else {
+    showSuccess(email);
+  }
 
-// //This is the longer version of event listiners
-// //Event Listenters
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
+  if (password.value === "") {
+    showError(password, "Sorry! Password is required.");
+  } else {
+    showSuccess(password);
+  }
 
-//   if (username.value === "") {
-//     showError(username, "Sorry! Username is required.");
-//   } else {
-//     showSuccess(username);
-//   }
-
-//   if (email.value === "") {
-//     showError(email, "Sorry! Email is required.");
-//   } else if (!isValidEmail(email.value)) {
-//     showError(email, "Email is not valid");
-//   } else {
-//     showSuccess(email);
-//   }
-
-//   if (password.value === "") {
-//     showError(password, "Sorry! Password is required.");
-//   } else {
-//     showSuccess(password);
-//   }
-
-//   if (password2.value === "") {
-//     showError(password2, "Sorry! Password is required.");
-//   } else {
-//     showSuccess(password2);
-//   }
-// });
+  if (password2.value === "") {
+    showError(password2, "Sorry! Password is required.");
+  } else {
+    showSuccess(password2);
+  }
+});
