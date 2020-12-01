@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Projects/nature/style.css" />
+    <title>Nature</title>
+  </head>
+  <body>
+    <div id="hero">
+      <div class="navbar">
+        <a href="/Projects/nature/index.html"
+          ><img
+            src="/Projects/neon/images/neon-logo.png"
+            class="logo"
+            alt="logo"
+        /></a>
+        <div class="user">
+          <button type="button">Sign up</button>
+        </div>
+      </div>
+      <div class="container">
+        <form id="form" class="form">
+          <h2>Sign Up!</h2>
+          <div class="form-control">
+            <!--UserName-->
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username" />
+            <small>Error message</small
+            ><!--to have validation we are going to add the error here-->
+          </div>
+          <!--End UserName-->
+          <!--Email-->
+          <div class="form-control">
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Enter email" />
+            <small>Error message</small>
+          </div>
+          <!--End email-->
+          <!--Password-->
+          <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" />
+            <small>Error message</small>
+          </div>
+          <!--End Password-->
+          <!--Confirm-->
+          <div class="form-control">
+            <label for="password2">Password</label>
+            <input
+              type="password"
+              id="password2"
+              placeholder="Enter password"
+            />
+            <small>Error message</small>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+
+        <div class="social-links">
+          <img src="/Projects/water/images/fb.png" alt="facebook icon" />
+          <img src="/Projects/water/images/ig.png" alt="instagram icon" />
+          <img src="/Projects/water/images/tw.png" alt="twitter icon" />
+        </div>
+      </div>
+    </div>
+    <script src="apps.js"></script>
+  </body>
+</html>
